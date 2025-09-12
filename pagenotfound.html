@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>404 — Page Not Found</title>
+  <meta name="description" content="Page not found — friendly 404 page" />
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent1:#7c3aed;
+      --accent2:#06b6d4;
+      --muted: #9aa4b2;
+      --glass: rgba(255,255,255,0.04);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent 6%),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(6,182,212,0.08), transparent 8%),
+                  var(--bg);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      gap:24px;
+      flex-direction:column;
+    }
+
+    .card{
+      width:100%;
+      max-width:980px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:20px;
+      padding:28px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:20px;
+      align-items:center;
+    }
+
+    @media (max-width:880px){
+      .card{grid-template-columns:1fr; padding:20px}
+    }
+
+    .left{
+      padding:8px 12px;
+    }
+    .eyebrow{color:var(--muted); font-size:13px; letter-spacing:1px; text-transform:uppercase}
+    h1{margin:6px 0 8px; font-size:48px; line-height:1;}
+    @media (max-width:480px){h1{font-size:36px}}
+
+    p.lead{margin:0 0 18px; color:var(--muted); max-width:52ch}
+
+    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:white;
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 6px 18px rgba(6,22,38,0.6);
+      transition:transform .18s ease, box-shadow .18s ease, opacity .12s;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn.secondary{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      box-shadow:none;
+    }
+    .btn:active{transform:translateY(1px)}
+    .muted-small{font-size:13px; color:var(--muted)}
+
+    /* Illustration column */
+    .art{
+      display:flex; align-items:center; justify-content:center;
+      padding:10px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border-radius:14px;
+      box-shadow: inset 0 -10px 30px rgba(2,6,23,0.25);
+      min-height:220px;
+    }
+
+    /* Animated 404 number */
+    .big404{
+      display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:2px;
+    }
+    .big404 .num{
+      font-size:84px; line-height:1; font-weight:900; color:transparent;
+      -webkit-text-stroke:2px rgba(255,255,255,0.06);
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+    }
+    @media (max-width:480px){.big404 .num{font-size:56px}}
+
+    /* simple floating dots */
+    .scene{position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center}
+    .dot{position:absolute; width:12px; height:12px; border-radius:50%; opacity:0.85; transform:translateY(0); animation:float 4s ease-in-out infinite}
+    .dot.a{left:18%; top:22%; background:var(--accent1); animation-delay:0s}
+    .dot.b{right:12%; bottom:18%; background:var(--accent2); animation-delay:0.8s}
+    .dot.c{left:70%; top:46%; background:rgba(255,255,255,0.06); width:8px; height:8px; animation-delay:1.2s}
+    @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+
+    footer.note{margin-top:12px; text-align:center; color:var(--muted); font-size:13px}
+
+    /* small helper for link look */
+    a.home-link{color:inherit; text-decoration:none; border-bottom:1px dashed rgba(255,255,255,0.04)}
+  </style>
+</head>
+<body>
+  <div class="card" role="main" aria-labelledby="title">
+    <div class="left">
+      <div class="eyebrow">Error</div>
+      <h1 id="title">Page Not Found</h1>
+      <p class="lead">We can't find the page you're looking for. It may have been moved or deleted — or you might have typed the URL incorrectly.</p>
+
+      <div class="actions" role="navigation" aria-label="404 actions">
+        <a class="btn" href="/" onclick="track('home')" title="Go to home">
+          <!-- Home icon (inline svg) -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 11.5L12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V11.5z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          Take me home
+        </a>
+
+        <a class="btn secondary" href="javascript:history.back()" title="Go back">
+          Go back
+        </a>
+
+        
+      </div>
+
+      <p class="muted-small" style="margin-top:14px">If you think this is a mistake, <a class="home-link" href="mailto:baneetk4@gmail.com">contact us</a> and we'll help.</p>
+
+      <footer class="note">Error code: <strong>404</strong></span></footer>
+    </div>
+
+    <div class="art" aria-hidden="true">
+      <div class="scene" role="img" aria-label="404 illustration">
+        <div class="dot a"></div>
+        <div class="dot b"></div>
+        <div class="dot c"></div>
+
+        <div class="big404" style="z-index:2">
+          <div class="num">4</div>
+          <svg width="120" height="80" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g" x1="0" x2="1">
+                <stop offset="0" stop-color="#7c3aed" />
+                <stop offset="1" stop-color="#06b6d4" />
+              </linearGradient>
+            </defs>
+            <rect x="8" y="8" width="104" height="64" rx="10" fill="url(#g)" fill-opacity="0.12"></rect>
+            <text x="60" y="52" text-anchor="middle" font-size="46" font-weight="700" fill="url(#g)">0</text>
+          </svg>
+          <div class="num">4</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // small niceties: show requested URL and a simple tracking stub
+    (function(){
+      var el = document.getElementById('requrl');
+      try{ el.textContent = location.pathname + (location.search || '') + (location.hash || ''); }catch(e){ el.textContent = '-'; }
+    })();
+
+    function track(ev){
+      // stub for analytics: replace with your analytics call if desired
+      console.log('404 action:', ev, {path: location.pathname});
+    }
+  </script>
+</body>
+</html>
